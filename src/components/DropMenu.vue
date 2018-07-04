@@ -13,18 +13,18 @@
 .main
   margin auto
   width 125px
-  button 
+  button
     display block
     width 100%
     color #ffffff
     border 0
     background-color #39f
     padding 6px
-    text-align center 
+    text-align center
     border-radius 4px
-    cursor pointer 
-    outline none 
-    position relative 
+    cursor pointer
+    outline none
+    position relative
   button:active
     top 1px
     left 1px
@@ -49,7 +49,7 @@ export default {
     }
   },
   methods: {
-    handleClose: function() {
+    handleClose: function () {
       this.show = false
     }
   },

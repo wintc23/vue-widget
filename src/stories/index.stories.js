@@ -1,11 +1,11 @@
 /* eslint-disable react/react-in-jsx-scope */
 
-import { storiesOf } from '@storybook/vue';
-import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
+import { storiesOf } from '@storybook/vue'
+import { action } from '@storybook/addon-actions'
+import { linkTo } from '@storybook/addon-links'
 
-import MyButton from './MyButton.vue';
-import Welcome from './Welcome.vue';
+import MyButton from './MyButton.vue'
+import Welcome from './Welcome.vue'
 import TestStory from '../components/TestStory.vue'
 import DropMenu from '../components/DropMenu.vue'
 import TimeShow from '../components/TimeShow.vue'
@@ -13,34 +13,34 @@ import TimeShow from '../components/TimeShow.vue'
 storiesOf('Welcome', module).add('to Storybook', () => ({
   components: { Welcome },
   template: '<welcome :showApp="action" />',
-  methods: { action: linkTo('Button') },
-}));
+  methods: { action: linkTo('Button') }
+}))
 
 storiesOf('Button', module)
   .add('with text', () => ({
     components: { MyButton },
     template: '<my-button @click="action">Hello Button</my-button>',
-    methods: { action: action('clicked') },
+    methods: { action: action('clicked') }
   }))
   .add('with JSX', () => ({
     components: { MyButton },
-    render(h) {
-      return <my-button onClick={this.action}>With JSX</my-button>;
+    render (h) {
+      return <my-button onClick={this.action}>With JSX</my-button>
     },
-    methods: { action: linkTo('clicked') },
+    methods: { action: linkTo('clicked') }
   }))
   .add('with some emoji', () => ({
     components: { MyButton },
     template:
       '<my-button @click="action"><span role="img" aria-label="so cool">😀 😎 👍 💯</span></my-button>',
-    methods: { action: action('clicked') },
-  }));
+    methods: { action: action('clicked') }
+  }))
 
 storiesOf('Notify', module)
   .add('with text', () => ({
     components: { TestStory },
     template: '<test-story /><>',
-    methods: {},
+    methods: {}
   }))
   .add('with JSX', () => ({
     components: { TestStory },
@@ -49,14 +49,14 @@ storiesOf('Notify', module)
     }
   }))
 
-  storiesOf('dropmenu', module)
-    .add('with text', () => ({
-      components: { DropMenu },
-      template: '<drop-menu></drop-menu>'
-    }))
-  storiesOf('timeshow', module)
-    .add('with text', () => ({
-      components: { TimeShow },
-      template: '<time-show></time-show>'
-    }))
+storiesOf('dropmenu', module)
+  .add('with text', () => ({
+    components: { DropMenu },
+    template: '<drop-menu></drop-menu>'
+  }))
+storiesOf('timeshow', module)
+  .add('with text', () => ({
+    components: { TimeShow },
+    template: '<time-show></time-show>'
+  }))
 /* eslint-enable react/react-in-jsx-scope */

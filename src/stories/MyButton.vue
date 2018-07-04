@@ -9,25 +9,25 @@
 </template>
 
 <script>
-  export default {
-    name: 'my-button',
-    data () {
-      return {
-        data: {
+export default {
+  name: 'my-button',
+  data () {
+    return {
+      data: {
 
-        }
       }
-    },
-    methods: {
-      onClick () {
-        this.$emit('click');
-      }
-    },
-    mounted () {
-      let list = ['a', 'b']
-      this.data = {...list}
     }
+  },
+  methods: {
+    onClick () {
+      this.$emit('click')
+    }
+  },
+  mounted () {
+    let list = ['a', 'b']
+    this.data = {...list}
   }
+}
 </script>
 
 <style>

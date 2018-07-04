@@ -16,12 +16,17 @@ export default new Router({
       children: [
         {
           path: '',
-          redirect: 'drag'
+          redirect: 'animation'
         },
         {
           path: 'drag',
           name: 'Drag',
           component: () => import('@/pages/Drag')
+        },
+        {
+          path: 'animation',
+          name: 'Animation',
+          component: () => import('@/pages/Animation')
         }
       ]
     }

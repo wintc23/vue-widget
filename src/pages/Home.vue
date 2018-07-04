@@ -3,8 +3,9 @@
     <Layout class="page-layout">
       <Header class="header">
         <div class="header-logo">
-          <router-link to="home"></router-link>
-          <span>Widget</span>
+          <router-link to="/home">
+            <span>Widget</span>
+          </router-link>
         </div>
         <div class="header-link">
           <span
@@ -12,7 +13,9 @@
             :key="idx"
             class="link-item">
             <a :href="item.link" target="_blank">
-              <Icon :type="item.icon"></Icon>
+              <Tooltip :transfer="true" :content="item.tip">
+                <Icon :type="item.icon"></Icon>
+              </Tooltip>
             </a>
           </span>
         </div>
@@ -20,10 +23,11 @@
       <Layout class="content-layout">
         <Sider hide-trigger :style="{background: '#fff'}">
           <Menu
-            active-name="CSSAnimation"
+            :active-name="activeName"
             theme="light"
             width="auto"
             class="content-menu"
+            @on-select="selectMenuItem"
             :open-names="['CSS']">
             <Submenu
               v-for="(subMenu, index) of menu"
@@ -54,16 +58,19 @@
 export default {
   data () {
     return {
+      activeName: 'CSSAnimation',
       menu: [{
         name: 'CSS',
         label: 'CSS',
         menuItem: [{
           name: 'CSSAnimation',
-          label: '动画(Animation)'
+          label: '动画(Animation)',
+          router: 'Animation'
         },
         {
           name: 'CSSDrag',
-          label: '拖动'
+          label: '拖动',
+          router: 'Drag'
         }]
       },
       {
@@ -71,23 +78,42 @@ export default {
         label: 'JS',
         menuItem: [{
           name: 'JSAnimation',
-          label: '动画(Animation)'
+          label: '动画(Animation)',
+          router: 'Animation'
         },
         {
           name: 'JSDrag',
-          label: '拖动'
+          label: '拖动',
+          router: 'Drag'
         }]
       }],
       linkItems: [
         {
+          icon: 'android-compass',
+          link: 'https://blog.csdn.net/u010419337',
+          tip: '博客'
+        },
+        {
           icon: 'social-github',
-          link: 'https://github.com/Lushenggang'
+          link: 'https://github.com/Lushenggang',
+          tip: 'github'
         }
       ]
     }
   },
+  mounted () {
+    this.selectMenuItem(this.activeName)
+  },
   methods: {
-    //
+    selectMenuItem (name) {
+      for (let menuItems of this.menu) {
+        for (let item of menuItems.menuItem) {
+          if (item.name === name) {
+            this.$router.push({ name: item.router })
+          }
+        }
+      }
+    }
   }
 }
 </script>
@@ -121,6 +147,7 @@ export default {
   color #F7F7F7
   font-size 2rem
   .link-item
+    margin-left 1rem
     a:link, a:visited, a:hover, a:active
       color #F7F7F7
 
@@ -132,7 +159,8 @@ export default {
 .content-layout
   height 100%
   .content-menu
+    user-select none
     height 100%
-    overflow-y scroll
+    overflow-y auto
     text-align left
 </style>

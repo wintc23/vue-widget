@@ -28,29 +28,29 @@ var Time = {
     return date.getTime()
   },
   getLastDate: function (time) {
-    var date= new Date(time)
+    var date = new Date(time)
     var month = date.getMonth() + 1
     var day = date.getDate()
-    month = month < 10 ? '0' + month : month 
+    month = month < 10 ? '0' + month : month
     day = day < 10 ? '0' + day : day
-    return date.getFullYear () + '-' + month + '-' + day
+    return date.getFullYear() + '-' + month + '-' + day
   },
   getFormatTime: function (timestamp) {
     var now = this.getUnix()
     var today = this.getTodyUnix()
-    var year = this.getYearUnix()
-    var detaTime = (now-timestamp) / 1000
+    // var year = this.getYearUnix()
+    var detaTime = (now - timestamp) / 1000
     var tip = ''
     if (detaTime <= 0) {
       tip = '刚刚'
-    } else if (Math.floor(detaTime/60) <= 0) {
-      tip = Math.floor(detaTime/60) + '秒前'
+    } else if (Math.floor(detaTime / 60) <= 0) {
+      tip = Math.floor(detaTime / 60) + '秒前'
     } else if (detaTime < 3600) {
-      tip = Math.floor(detaTime/60) + '分钟前'
+      tip = Math.floor(detaTime / 60) + '分钟前'
     } else if (timestamp - today >= 0) {
-      tip = Math.floor(detaTime/3600) + '小时前'
-    } else if (detaTime/(3600 * 24) <= 31) {
-      tip = Math.ceil (detaTime/(3600 * 24)) + '天前'
+      tip = Math.floor(detaTime / 3600) + '小时前'
+    } else if (detaTime / (3600 * 24) <= 31) {
+      tip = Math.ceil(detaTime / (3600 * 24)) + '天前'
     } else {
       tip = this.getLastDate(timestamp)
     }
