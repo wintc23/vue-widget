@@ -11,13 +11,13 @@
         </span>
         <input class="node-name" v-model="data.name" />
         <span class="node-menu">
-          <span class="menu-item" title="添加同级节点" @click.stop="addBrother($event, data)">
+          <span class="menu-item" title="添加同级节点" @click.stop="$emit('addBrother', $event, data)">
             <Icon type="plus-round"></Icon>
           </span>
-          <span class="menu-item" title="添加下级节点" @click.stop="addChild($event, data)">
+          <span class="menu-item" title="添加下级节点" @click.stop="$emit('addChild', $event, data)">
             <Icon type="ios-plus-outline"></Icon>
           </span>
-          <span class="menu-item" title=“删除” @click.stop="deleteNode($event, data)">
+          <span class="menu-item" title=“删除” @click.stop="$emit('deleteNode', $event, data)">
             <Icon type="trash-a"></Icon>
           </span>
         </span>
@@ -70,55 +70,6 @@ export default {
           }]
         }]
       }]
-    }
-  },
-  data () {
-    return {
-      id: 100
-    }
-  },
-  methods: {
-    addBrother (event, data) {
-      let parentData = this.getParentData(event.target)
-      if (parentData) {
-        let index = parentData.indexOf(data)
-        if (index !== -1) {
-          parentData.splice(index + 1, 0, this.newNode())
-        }
-      }
-    },
-    addChild (event, data) {
-      if (!data.children) {
-        this.$set(data, 'children', [])
-      }
-      data.children.push(this.newNode())
-    },
-    deleteNode (event, data) {
-      let parentData = this.getParentData(event.target)
-      if (parentData) {
-        let index = parentData.indexOf(data)
-        if (index !== -1) {
-          parentData.splice(index, 1)
-        }
-      }
-    },
-    newNode () {
-      let id = this.id++
-      return {
-        id,
-        name: '新节点' + id,
-        expand: true,
-        children: []
-      }
-    },
-    getParentData (node) {
-      while (node && node.tagName !== 'BODY') {
-        if (node.__vue__ && node.__vue__.$options.name === 'my-tree') {
-          return node.__vue__.treeData
-        }
-        node = node.parentNode
-      }
-      return null
     }
   }
 }
