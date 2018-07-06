@@ -1,0 +1,2 @@
+webpackJsonp([2],{Gpr5:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r={render:function(){var e=this.$createElement;return(this._self._c||e)("div",{directives:[{name:"drag",rawName:"v-drag"}],staticClass:"drag"},[this._v("\n  可拖动窗口\n")])},staticRenderFns:[]};var a=n("VU/8")({},r,!1,function(e){n("lLTI")},"data-v-fbdce6c2",null);t.default=a.exports},lLTI:function(e,t){}});
+//# sourceMappingURL=2.d082a4fb3276dd4da908.js.map
