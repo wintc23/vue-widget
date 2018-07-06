@@ -128,7 +128,7 @@ export default {
 .children
   position relative
   padding-left 20px
-.node-expand,
+.node-expand
   width 1.5rem
   height 1.5rem
   padding-left 0
