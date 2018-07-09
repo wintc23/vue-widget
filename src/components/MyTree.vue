@@ -27,6 +27,9 @@
         v-if="data.children && data.children.length"
         v-show="data.expand">
         <my-tree
+          @addBrother="addBrother"
+          @addChild="addChild"
+          @deleteNode="deleteNode"
           :treeData="data.children">
         </my-tree>
       </div>
@@ -70,6 +73,17 @@ export default {
           }]
         }]
       }]
+    }
+  },
+  methods: {
+    addBrother (event, data) {
+      this.$emit('addBrother', event, data)
+    },
+    addChild (event, data) {
+      this.$emit('addChild', event, data)
+    },
+    deleteNode (event, data) {
+      this.$emit('deleteNode', event, data)
     }
   }
 }

@@ -27,6 +27,7 @@ export default {
   methods: {
     addBrother (event, data) {
       let parentData = this.getParentData(event.target)
+      console.log(parentData)
       if (parentData) {
         let index = parentData.indexOf(data)
         if (index !== -1) {
