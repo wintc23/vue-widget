@@ -7,7 +7,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/home'
+      name: 'Index',
+      component: () => import('@/pages/Index')
     },
     {
       path: '/home',
@@ -27,6 +28,11 @@ export default new Router({
           path: 'animation',
           name: 'Animation',
           component: () => import('@/pages/Animation')
+        },
+        {
+          path: 'tree',
+          name: 'Tree',
+          component: () => import('@/pages/Tree')
         }
       ]
     }

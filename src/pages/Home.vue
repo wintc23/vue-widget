@@ -3,7 +3,7 @@
     <Layout class="page-layout">
       <Header class="header">
         <div class="header-logo">
-          <router-link to="/home">
+          <router-link to="/">
             <span>Widget</span>
           </router-link>
         </div>
@@ -28,7 +28,7 @@
             width="auto"
             class="content-menu"
             @on-select="selectMenuItem"
-            :open-names="['CSS']">
+            :open-names="['components']">
             <Submenu
               v-for="(subMenu, index) of menu"
               :key="index"
@@ -40,6 +40,7 @@
               <MenuItem
                 v-for="(item, idx) of subMenu.menuItem"
                 :key="idx"
+                v-if="!item.hide"
                 :name="item.name">
                 {{ item.label }}
               </MenuItem>
@@ -58,33 +59,29 @@
 export default {
   data () {
     return {
-      activeName: 'CSSAnimation',
+      activeName: 'tree',
       menu: [{
-        name: 'CSS',
-        label: 'CSS',
+        name: 'components',
+        label: '组件',
         menuItem: [{
-          name: 'CSSAnimation',
-          label: '动画(Animation)',
-          router: 'Animation'
-        },
-        {
-          name: 'CSSDrag',
-          label: '拖动',
-          router: 'Drag'
+          name: 'tree',
+          label: '树形结构(Tree)',
+          router: 'Tree'
         }]
       },
       {
         name: 'JS',
-        label: 'JS',
+        label: 'JS效果',
         menuItem: [{
-          name: 'JSAnimation',
-          label: '动画(Animation)',
-          router: 'Animation'
-        },
-        {
           name: 'JSDrag',
           label: '拖动',
           router: 'Drag'
+        },
+        {
+          hide: true,
+          name: 'JSAnimation',
+          label: '动画(Animation)',
+          router: 'Animation'
         }]
       }],
       linkItems: [
@@ -95,7 +92,7 @@ export default {
         },
         {
           icon: 'social-github',
-          link: 'https://github.com/Lushenggang',
+          link: 'https://github.com/Lushenggang/vue-widget',
           tip: 'github'
         }
       ]
