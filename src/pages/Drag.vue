@@ -8,6 +8,8 @@
 
 <script>
 export default {
+  name: 'Drag',
+  showName: '元素拖动(Drag)'
 }
 </script>
 

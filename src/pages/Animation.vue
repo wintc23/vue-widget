@@ -9,6 +9,8 @@
 </template>
 <script>
 export default {
+  lock: true,
+  showName: '动画(Animation)',
   data () {
     return {
       show: false,

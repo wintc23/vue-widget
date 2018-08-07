@@ -16,6 +16,7 @@ import MyTree from '@/components/MyTree'
 
 export default {
   name: 'tree',
+  showName: '树形结构(Tree)',
   components: {
     'my-tree': MyTree
   },

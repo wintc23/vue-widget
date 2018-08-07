@@ -43,6 +43,7 @@
 
 <script>
 export default {
+  showName: '下拉菜单(DropMenu)',
   data () {
     return {
       show: false
