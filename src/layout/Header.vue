@@ -1,7 +1,9 @@
 <template>
   <div class="header">
     <div class="header-logo">
-      <Button type="info" class="logo-button">Widget</Button>
+      <router-link :to="{path:'/'}">
+        <Button type="info" class="logo-button">Widget</Button>
+      </router-link>
     </div>
     <div class="header-link">
       <span
@@ -20,7 +22,10 @@
 
 <style lang="stylus" scoped>
 .header
-  height 100%
+  min-height 3rem
+  border-radius 2px
+  background #2C405A
+  border-bottom 1px solid #FFF8E6
   display flex
   justify-content space-between
   align-items center
@@ -44,12 +49,12 @@ export default {
     return {
       linkItems: [
         {
-          icon: 'android-compass',
+          icon: 'logo-wordpress',
           link: 'https://blog.csdn.net/u010419337',
           tip: '博客'
         },
         {
-          icon: 'social-github',
+          icon: 'logo-github',
           link: 'https://github.com/Lushenggang/vue-widget',
           tip: 'github'
         }

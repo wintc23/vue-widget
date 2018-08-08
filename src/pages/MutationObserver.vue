@@ -1,10 +1,10 @@
 <template>
-  <div class="container">
+  <div class="mutaition-container">
     <div class="resize-element">
-      改变大小试试
-    </div>
-    <div class="resize-record">
-      触发了{{firedNum}}次resize事件。
+      <span>改变大小试试</span>
+      <span>
+        触发了{{firedNum}}次resize事件。
+      </span>
     </div>
   </div>
 </template>
@@ -51,18 +51,21 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.container
+.mutaition-container
   position relative
+  height 100%
+  display flex
+  justify-content center
+  align-items center
   .resize-element
-    transform translate(-50%, -50%)
-    position absolute
-    top 50%
-    left 50%
     height 10rem
     width 10rem
-    overflow hidden
+    overflow auto
     resize both
-    display block
     box-shadow 0 0 1px 1px #3361D8
     border-radius 2px
+    display flex
+    flex-direction column
+    justify-content center
+    align-items center
 </style>

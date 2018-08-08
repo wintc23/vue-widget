@@ -7,8 +7,19 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Index',
-      component: () => import('@/layout/Index')
+      component: () => import('@/layout/Layout'),
+      children: [
+        {
+          path: '/',
+          name: 'Index',
+          component: () => import('@/layout/Index')
+        },
+        {
+          path: 'widget',
+          name: 'Widget',
+          component: () => import('@/layout/Widget')
+        }
+      ]
     }
   ]
 })

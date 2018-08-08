@@ -1,84 +1,100 @@
 <template>
-  <div class="container">
-    <div class="header">
-      <Header></Header>
+  <div class="layout-home">
+    <div class="home-content">
+      <span class="content">
+        Hi,这里是我的个人网站。
+      </span>
+      <br>
+      <span class="content">
+        这里记录了一些个人的学习、生活以及对一些问题的思考和心得。
+      </span>
+      <br>
+      <span class="content">
+        您可以点击下面的导航链接访问您感兴趣的内容。
+      </span>
     </div>
-    <div class="content">
-      <div class="menu-list">
-        <div
-          :class="['menu-item', currentComponent === key ? 'current-menu' : '']"
-          v-for="(value, key) of components"
-          v-if="!value.lock"
-          @click.stop="currentComponent=key"
-          :key="key">{{ value.showName || key }}
-        </div>
-      </div>
-      <div class="menu-content">
-        <component
-          v-if="currentComponent"
-          :is="components[currentComponent]">
-        </component>
-      </div>
+    <div class="nav-items">
+      <router-link
+        class="nav-item"
+        v-for="(item, idx) of navItems"
+        :key="idx"
+        :to="{name: item.name}">
+        <span class="circle"></span>
+        {{item.title}}
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
-import componentList from '@/pages'
-import Header from './Header'
 
 export default {
   data () {
     return {
-      components: { ...componentList },
-      currentComponent: ''
+      navItems: [
+        {
+          title: '前端小实验',
+          name: 'Widget'
+        },
+        {
+          title: '博客',
+          name: 'Widget'
+        },
+        {
+          title: '教程',
+          name: 'Widget'
+        },
+        {
+          title: '开源项目',
+          name: 'Widget'
+        }
+      ]
     }
   },
-  components: {
-    Header
+  created () {
+    this.$router.push({ name: 'Widget' })
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-.container
-  height 100%
+.layout-home
   display flex
+  align-items center
+  justify-content center
   flex-direction column
-  .header
-    min-height 3rem
-    border-radius 2px
-    background #2C405A
-    border-bottom 1px solid #FFF8E6
-  .content
-    color #3F536E
+  .home-content
+    font-size 1rem
+    box-shadow 0 0 0 1px #B0C8F4
+    border 1px solid #3361D8
+    border-radius 4px
+    width 50%
+    padding 1rem
+    margin-bottom 2rem
+    .content
+      display inline-block
+      text-align left
+  .nav-items
     display flex
-    flex auto
-    background #F7F7F7
-    .menu-list
-      overflow-y auto
-      overflow-x hidden
-      min-width 10rem
-      box-shadow 0 2px 2px 1px #4F7DE2
-      background white
-      .menu-item
-        height 2.5rem
-        box-shadow 2px 0 2px 0 #79A1EB
-        display flex
-        align-items center
-        justify-content center
-        cursor pointer
-        user-select none
-        -webkit-user-select none
-        &:hover
-          background #ECF2FC
-        &:active
-          position relative
-          left 1px
-          top 1px
-        &.current-menu
-          background #BCD2FD
-    .menu-content
-      flex auto
-      overflow auto
+    flex-direction column
+    align-items flex-start
+    font-size 1.5rem
+    .nav-item
+      .circle
+        display inline-block
+        width 1rem
+        height 1rem
+        border 2px solid currentColor
+        border-radius 0.5rem
+        margin-right 0.5rem
+      &:hover
+        position relative
+        top 1px
+        color #FFC82C
+      &:active
+        left 1px
+.hello
+  border 1px solid red
+  width 100px
+  height 100px
 </style>
