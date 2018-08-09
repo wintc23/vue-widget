@@ -12,7 +12,8 @@ export default new Router({
         {
           path: '/',
           name: 'Index',
-          component: () => import('@/layout/Index')
+          redirect: '/widget',
+          // component: () => import('@/layout/Index')
         },
         {
           path: 'widget',
